@@ -37,3 +37,23 @@ Aukerako parametroak:
   * `osozaila2`
   * `ebatziezina`
   * `ebazpenanitz`
+
+## Lizentzia
+
+Programa hau software librea da: birbanatu dezakezu, eta/edo aldatu,
+Software Librearen Fundazioak argitaratutako GNU Lizentzia Publiko
+Orokorraren baldintzen arabera, dela Lizentziaren 3. bertsioaren arabera
+edo dela (nahi baduzu) bertsio berriagoren baten arabera.
+
+Erabilgarria izango delakoan banatzen da programa hau, baina INOLAKO
+BERMERIK GABE; ez du KOMERTZIALIZAGARRITASUNAREN EDO XEDE JAKIN BATERAKO
+EGOKITASUNAREN berme inpliziturik ere. Xehetasun gehiagorako ikusi GNU
+Lizentzia Publiko Orokorra.
+
+Programa honekin batera GNU Lizentzia Publiko Orokorraren kopia bat jaso
+eharko zenuke. Ez baduzu halakorik jaso, ikusi
+<http://www.gnu.org/licenses/>.
+
+## Egilea
+
+Egilea: e-gor (Igor Leturia), <https://github.com/e-gor>
