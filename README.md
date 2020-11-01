@@ -25,7 +25,7 @@ Aukerako parametroak:
 * `-h, --help`: erabilera eta parmetorei buruzko laguntza
 * `-b, --ez_bistaratu`: ez erakutsi aukera eta pauso guztiak, baizki eta azken emaitza soilik
 * `-g, --ez_gelditu`: ez gelditu pauso bakoitza erakutsi ostean
-* `-a <AURREDEFINITUA>`: aurrez definitutako sudoku bat erabili adibide gisa, hauen artetik:
+* `-a, --aurrez_definitua <AURREDEFINITUA>`: aurrez definitutako sudoku bat erabili adibide gisa, hauen artetik:
   * `hutsa`
   * `erraza1`
   * `erraza2`
