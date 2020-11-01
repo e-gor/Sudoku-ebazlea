@@ -149,12 +149,12 @@ def begiratu_zuzena_den(sudoku_arraya):
             aukerak_koadroetan_zerrenda = [elementua for lerroa in [
                 lerroa[(zutabe_indizea // 3) * 3:((zutabe_indizea // 3) + 1) * 3] for lerroa in
                 sudoku_arraya[(lerro_indizea // 3) * 3:((lerro_indizea // 3) + 1) * 3]] for elementua in lerroa]
-        koadroko_elementuak = list(filter(lambda x: x != '-', aukerak_koadroetan_zerrenda))
-        koadroko_elementuak_kopuruekin = [[x, aukerak_koadroetan_zerrenda.count(x)] for x in set(koadroko_elementuak)]
-        koadroko_elementu_errepikatuak = list(filter(lambda y: y[1] > 1, koadroko_elementuak_kopuruekin))
-        if len(koadroko_elementu_errepikatuak) > 0:
-            koadroko_errepikatuak = [[lerro_indizea+(indizea//3), zutabe_indizea+(indizea % 3), str(s)] for indizea, s in enumerate(aukerak_koadroetan_zerrenda) if koadroko_elementu_errepikatuak[0][0] == s]
-            errepikatuak.extend(koadroko_errepikatuak)
+            koadroko_elementuak = list(filter(lambda x: x != '-', aukerak_koadroetan_zerrenda))
+            koadroko_elementuak_kopuruekin = [[x, aukerak_koadroetan_zerrenda.count(x)] for x in set(koadroko_elementuak)]
+            koadroko_elementu_errepikatuak = list(filter(lambda y: y[1] > 1, koadroko_elementuak_kopuruekin))
+            if len(koadroko_elementu_errepikatuak) > 0:
+                koadroko_errepikatuak = [[lerro_indizea+(indizea//3), zutabe_indizea+(indizea % 3), str(s)] for indizea, s in enumerate(aukerak_koadroetan_zerrenda) if koadroko_elementu_errepikatuak[0][0] == s]
+                errepikatuak.extend(koadroko_errepikatuak)
     if len(errepikatuak)>0:
         return errepikatuak
     else:
