@@ -407,9 +407,11 @@ args = parser.parse_args()
 bistaratu = not args.ez_bistaratu
 gelditu = not args.ez_gelditu
 
-# Adibideko sudokuetako bat aukeratu
+# Adibideko sudokuetako bat aukeratu parametroetan hala adierazi bada
 if args.aurrez_definitua:
     sudokua = hasierako_sudokuak[args.aurrez_definitua]
+
+# Edo eskuz sartu sudokua
 else:
     sudokua = hasierako_sudokuak["hutsa"]
     sudokua = list(map(lambda x: list(map(lambda y: str(y).replace('0', '-'), x)), sudokua))
