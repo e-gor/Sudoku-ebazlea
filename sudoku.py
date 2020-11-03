@@ -26,7 +26,7 @@ Iturburu-kode osoa, jarraibideak eta lizentzia: <https://github.com/e-gor/Sudoku
 """
 
 import re
-from copy import copy, deepcopy
+from copy import deepcopy
 import argparse
 
 import termcolor
@@ -416,21 +416,22 @@ hasierako_sudokua_ebazpenanitz = [
     [0, 3, 0, 0, 0, 2, 0, 0, 0],
 ]
 
-hasierako_sudokuak = {}
-hasierako_sudokuak["hutsa"] = hasierako_sudokua_hutsa
-hasierako_sudokuak["erraza1"] = hasierako_sudokua_erraza_1
-hasierako_sudokuak["erraza2"] = hasierako_sudokua_erraza_2
-hasierako_sudokuak["ertaina1"] = hasierako_sudokua_ertaina_1
-hasierako_sudokuak["ertaina2"] = hasierako_sudokua_ertaina_2
-hasierako_sudokuak["zaila1"] = hasierako_sudokua_zaila_1
-hasierako_sudokuak["zaila2"] = hasierako_sudokua_zaila_2
-hasierako_sudokuak["osozaila1"] = hasierako_sudokua_osozaila_1
-hasierako_sudokuak["osozaila2"] = hasierako_sudokua_osozaila_2
-hasierako_sudokuak["ebatziezina"] = hasierako_sudokua_ebatziezina
-hasierako_sudokuak["ebazpenanitz"] = hasierako_sudokua_ebazpenanitz
+hasierako_sudokuak = {
+    "hutsa": hasierako_sudokua_hutsa,
+    "erraza1": hasierako_sudokua_erraza_1,
+    "erraza2": hasierako_sudokua_erraza_2,
+    "ertaina1": hasierako_sudokua_ertaina_1,
+    "ertaina2": hasierako_sudokua_ertaina_2,
+    "zaila1": hasierako_sudokua_zaila_1,
+    "zaila2": hasierako_sudokua_zaila_2,
+    "osozaila1": hasierako_sudokua_osozaila_1,
+    "osozaila2": hasierako_sudokua_osozaila_2,
+    "ebatziezina": hasierako_sudokua_ebatziezina,
+    "ebazpenanitz": hasierako_sudokua_ebazpenanitz
+}
 
 
-def bistaratu_taula(sudoku_arraya, kolore_zerrendak=[], zabalera=None):
+def bistaratu_taula(sudoku_arraya, kolore_zerrendak=(), zabalera=None):
     """
     Sudoku bat modu politean eta ertzekin bistaratzen du pantailan, nahi izanez gero elementu batzuk kolore batelkin nabarmenduz.
      
@@ -469,7 +470,7 @@ def bistaratu_taula(sudoku_arraya, kolore_zerrendak=[], zabalera=None):
     taula.append(banatzeko_lerroa)
     taula = boxea.ascii_to_box('\n'.join(taula))
     for errepikapena in range(3):
-        taula = taula.replace (' ─ ', ' - ')
+        taula = taula.replace(' ─ ', ' - ')
     taula_zerrenda = taula.split('\n')
     for kolore_zerrenda in kolore_zerrendak:
         lerro_indizea = kolore_zerrenda[0]
@@ -498,10 +499,10 @@ def ezabatu_aukerak_elementutik(elementuaren_aukerak, lerro_indizea, zutabe_indi
     :return: elementuaren aukera berriak, sudokuko kointzidentziak kendu eta gero
     """
     
-    elementuaren_aukerak = ''.join([i for i in elementuaren_aukerak if i not in ''.join(map(lambda x: x.replace('-',''), sudoku_arraya[lerro_indizea]))])
+    elementuaren_aukerak = ''.join([i for i in elementuaren_aukerak if i not in ''.join(map(lambda x: x.replace('-', ''), sudoku_arraya[lerro_indizea]))])
     elementuaren_aukerak = ''.join(
-        [i for i in elementuaren_aukerak if i not in ''.join(map(lambda x: x.replace('-',''), [lerroa[zutabe_indizea] for lerroa in sudoku_arraya]))])
-    elementuaren_aukerak = ''.join([i for i in elementuaren_aukerak if i not in ''.join(map(lambda x: x.replace('-',''), [elementua for lerroa in [
+        [i for i in elementuaren_aukerak if i not in ''.join(map(lambda x: x.replace('-', ''), [lerroa[zutabe_indizea] for lerroa in sudoku_arraya]))])
+    elementuaren_aukerak = ''.join([i for i in elementuaren_aukerak if i not in ''.join(map(lambda x: x.replace('-', ''), [elementua for lerroa in [
         lerroa[(zutabe_indizea // 3) * 3:((zutabe_indizea // 3) + 1) * 3] for lerroa in
         sudoku_arraya[(lerro_indizea // 3) * 3:((lerro_indizea // 3) + 1) * 3]] for elementua in lerroa]))])
     if elementuaren_aukerak == '':
@@ -520,8 +521,7 @@ def ezabatu_aukerak_aukeren_arraytik(aukeren_arraya, sudoku_arraya):
     
     for lerro_indizea, lerroa in enumerate(aukeren_arraya):
         for zutabe_indizea, elementua in enumerate(lerroa):
-            aukeren_arraya[lerro_indizea][zutabe_indizea] = ezabatu_aukerak_elementutik(elementua, lerro_indizea, zutabe_indizea,
-                                                                                 sudoku_arraya)
+            aukeren_arraya[lerro_indizea][zutabe_indizea] = ezabatu_aukerak_elementutik(elementua, lerro_indizea, zutabe_indizea, sudoku_arraya)
     return aukeren_arraya
 
 
@@ -572,7 +572,7 @@ def begiratu_zuzena_den(sudoku_arraya):
             if len(koadroko_elementu_errepikatuak) > 0:
                 koadroko_errepikatuak = [[lerro_indizea+(indizea//3), zutabe_indizea+(indizea % 3), str(s)] for indizea, s in enumerate(aukerak_koadroetan_zerrenda) if koadroko_elementu_errepikatuak[0][0] == s]
                 errepikatuak.extend(koadroko_errepikatuak)
-    if len(errepikatuak)>0:
+    if len(errepikatuak) > 0:
         return errepikatuak
     else:
         return True
@@ -705,7 +705,7 @@ else:
     for lerro_indizea in range(9):
         for zutabe_indizea in range(9):
             print('')
-            print(bistaratu_taula(sudokua,[[lerro_indizea, zutabe_indizea, '-', 'blue']]))
+            print(bistaratu_taula(sudokua, [[lerro_indizea, zutabe_indizea, '-', 'blue']]))
             balioa = 'k'
             mezua = "\nSartu hurrengo balioa:\n"
             while balioa != '' and balioa not in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']:
@@ -760,8 +760,7 @@ while not begiratu_amaituta(sudokua) and aukerak:
     if not okerra:
 
         # Begiratu ea posizioren batean aukera bakarrik dagoen
-        aukera_bakarrak = [(ix, iy, i) for ix, lerroa in enumerate(sudokuaren_aukerak) for iy, i in enumerate(lerroa) if
-                                i != '-' and i != '*' and len(i) == 1]
+        aukera_bakarrak = [(ix, iy, i) for ix, lerroa in enumerate(sudokuaren_aukerak) for iy, i in enumerate(lerroa) if i != '-' and i != '*' and len(i) == 1]
 
         # Begiratu lerroren batean zenbaki batek aukera toki bakarrean duen
         aukera_bakarrak.extend(aukerak_lerroetan(sudokuaren_aukerak, luzera=1))
@@ -772,7 +771,7 @@ while not begiratu_amaituta(sudokua) and aukerak:
         # Begiratu koadroren batean zenbaki batek aukera toki bakarrean duen
         aukera_bakarrak.extend(aukerak_koadroetan(sudokuaren_aukerak, luzera=1))
 
-        #Aukera bakarrik badago
+        # Aukera bakarrik badago
         if len(aukera_bakarrak) > 0:
 
             # Hartu aukera bakarretatik lehenengoa
@@ -826,8 +825,7 @@ while not begiratu_amaituta(sudokua) and aukerak:
 
                 # Besteak sartu lehenagoko aukeretan, atzera bueltatzeko biderik ez badago
                 sudokuaren_aukerak_copy = deepcopy(sudokuaren_aukerak)
-                sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]] = \
-                sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]].replace(lehen_aukera[2], '')
+                sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]] = sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]].replace(lehen_aukera[2], '')
                 lehenagoko_aukerak.append([deepcopy(sudokua), sudokuaren_aukerak_copy, deepcopy(aukera_guztiak)])
 
                 # Aukera bakarra ez denez, kolore horia erakutsi
