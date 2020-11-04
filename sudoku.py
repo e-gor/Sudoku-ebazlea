@@ -809,6 +809,7 @@ while not begiratu_amaituta(sudokua) and aukerak:
             aukera_guztiak.extend(aukerak_lerroetan(sudokuaren_aukerak))
             aukera_guztiak.extend(aukerak_zutabeetan(sudokuaren_aukerak))
             aukera_guztiak.extend(aukerak_koadroetan(sudokuaren_aukerak))
+            aukera_guztiak=list(filter(lambda x: x[3] > 1, aukera_guztiak))
             aukera_guztiak.sort(key=lambda x: x[3])
 
             # Aukerarik ez badago
@@ -826,7 +827,10 @@ while not begiratu_amaituta(sudokua) and aukerak:
                 # Besteak sartu lehenagoko aukeretan, atzera bueltatzeko biderik ez badago
                 sudokuaren_aukerak_copy = deepcopy(sudokuaren_aukerak)
                 sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]] = sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]].replace(lehen_aukera[2], '')
-                lehenagoko_aukerak.append([deepcopy(sudokua), sudokuaren_aukerak_copy, deepcopy(aukera_guztiak)])
+                aukera_guztiak_copy = deepcopy(aukera_guztiak)
+                if len(sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]]) < 2:
+                    aukera_guztiak_copy = list(filter(lambda x: x[0] == lehen_aukera[0] and x[1] == lehen_aukera[1], aukera_guztiak_copy))
+                lehenagoko_aukerak.append([deepcopy(sudokua), sudokuaren_aukerak_copy, aukera_guztiak_copy])
 
                 # Aukera bakarra ez denez, kolore horia erakutsi
                 kolorea = 'yellow'
@@ -874,9 +878,12 @@ while not begiratu_amaituta(sudokua) and aukerak:
 
             # Besteak sartu lehenagoko aukeretan, atzera bueltatzeko biderik ez badago
             sudokuaren_aukerak_copy = deepcopy(sudokuaren_aukerak)
-            sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]] = \
-                sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]].replace(lehen_aukera[2], '')
-            lehenagoko_aukerak.append([deepcopy(sudokua), sudokuaren_aukerak_copy, deepcopy(aukera_guztiak)])
+            sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]] = sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]].replace(lehen_aukera[2], '')
+            aukera_guztiak_copy = deepcopy(aukera_guztiak)
+            if len(sudokuaren_aukerak_copy[lehen_aukera[0]][lehen_aukera[1]]) < 2:
+                aukera_guztiak_copy = list(
+                    filter(lambda x: x[0] == lehen_aukera[0] and x[1] == lehen_aukera[1], aukera_guztiak_copy))
+            lehenagoko_aukerak.append([deepcopy(sudokua), sudokuaren_aukerak_copy, aukera_guztiak_copy])
 
             # Aukera bakarra ez denez, kolore horia erakutsi
             kolorea = 'yellow'
