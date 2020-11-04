@@ -2,6 +2,10 @@
 
 Programa honek sudokuak ebazten ditu.
 
+Ustez, konponbidea duen edozein sudoku ebazteko gai da eta esaten badu ezin duela ebatzi, ebazpenik ez duelako da. Ordenagailuko sudoku jokoetan planteatzen diren hainbat sudokurekin eta zailtasun maila ezberdinekin probatu da, eta beti ebatzi ditu. Ebazpenik ez dutela ziur dakigun kasuetan, ebazpenik ez dutela esan du. Baina ezin daiteke ziurtatu.
+
+Sudokuak ebazpen bat baino gehiago badu, bet eman eta gelditu egiten da. Hurrengo exekuzio batean beste ezberdin bat eman dezake.
+
 ## Instalazioa
 
 Programa honek Python 3-rekin funtzionatzen du.
@@ -57,3 +61,12 @@ eharko zenuke. Ez baduzu halakorik jaso, ikusi
 ## Egilea
 
 Egilea: e-gor (Igor Leturia), <https://github.com/e-gor>
+
+## Egitekoak
+
+* GUI bat jarri
+* Web interfaze bat jarri
+* Zenbakiak hizketa bidez sartu
+* Zenbakiak sudoku bat eskaneatuta sartu
+
+Beharbada horietako bakoitza beste proiektu batean egin beharko litzateke.
