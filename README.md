@@ -4,7 +4,7 @@ Programa honek sudokuak ebazten ditu.
 
 Ustez, konponbidea duen edozein sudoku ebazteko gai da eta esaten badu ezin duela ebatzi, ebazpenik ez duelako da. Ordenagailuko sudoku jokoetan planteatzen diren hainbat sudokurekin eta zailtasun maila ezberdinekin probatu da, eta beti ebatzi ditu. Ebazpenik ez dutela ziur dakigun kasuetan, ebazpenik ez dutela esan du. Baina ezin daiteke ziurtatu.
 
-Sudokuak ebazpen bat baino gehiago badu, bet eman eta gelditu egiten da. Hurrengo exekuzio batean beste ezberdin bat eman dezake.
+Sudokuak ebazpen bat baino gehiago badu, bat eman eta gelditu egiten da. Hurrengo exekuzio batean beste ezberdin bat eman dezake.
 
 ## Instalazioa
 
