@@ -742,16 +742,26 @@ while not begiratu_amaituta(sudokua) and aukerak:
         okerra = True
         if bistaratu:
             print("\nOkerra:\n")
+            print("\nAukerak:\n")
+            print(bistaratu_taula(sudokuaren_aukerak, list(map(lambda x: [x[0], x[1], '#', 'red'], sudokua_zuzena))))
+            if gelditu:
+                input("\nSakatu <enter> jarraitzeko...")
+            print("\nTarteko sudokua:\n")
             print(bistaratu_taula(sudokua, list(map(lambda x: x+['red'], sudokua_zuzena))))
             if gelditu:
                 input("\nSakatu <enter> jarraitzeko...")
 
-    # Begiratu aukerak dauden, eta hala ez bada bistaratu aukera gabekoaren fondoa gorriz markatuta
+    # Begiratu aukerak dauden, eta hala ez bada bistaratu aukera gabekoa gorriz markatuta
     aukerak_zuzena = aukera_hutsik_ez(sudokuaren_aukerak)
     if aukerak_zuzena != True:
         okerra = True
         if bistaratu:
             print("\nAukerarik ez:\n")
+            print("\nAukerak:\n")
+            print(bistaratu_taula(sudokuaren_aukerak, list(map(lambda x: [x[0], x[1], '#', 'red'], aukerak_zuzena))))
+            if gelditu:
+                input("\nSakatu <enter> jarraitzeko...")
+            print("\nTarteko sudokua:\n")
             print(bistaratu_taula(sudokua, list(map(lambda x: x+['red'], aukerak_zuzena))))
             if gelditu:
                 input("\nSakatu <enter> jarraitzeko...")
@@ -922,6 +932,11 @@ else:
     if sudokua_zuzena != True:
         if bistaratu:
             print("\nOkerra:\n")
+            print("\nAukerak:\n")
+            print(bistaratu_taula(sudokuaren_aukerak, list(map(lambda x: [x[0], x[1], '#', 'red'], sudokua_zuzena))))
+            if gelditu:
+                input("\nSakatu <enter> jarraitzeko...")
+            print("\nTarteko sudokua:\n")
             print(bistaratu_taula(sudokua, list(map(lambda x: x+['red'], sudokua_zuzena))))
             if gelditu:
                 input("\nSakatu <enter> jarraitzeko...")
